@@ -1,0 +1,16 @@
+-# edit.html.haml using partial
+
+%h2 Edit Existing Venue
+
+= form_tag venue_path(@venue), :method => :put do
+
+  = label :venue, :venue_name, 'Venue Name'
+  = text_field :venue_name, 'venue_name'
+
+  = label :venue, :rating, 'Rating'
+  = select :venue, :rating, [1, 2, 3, 4, 5]
+
+  = label :venue, :location, 'Location'
+  = date_select :venue, :location
+
+  = submit_tag 'Update Venue Info', :class => 'btn btn-primary'
