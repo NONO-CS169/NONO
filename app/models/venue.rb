@@ -1,5 +1,5 @@
 class Venue < ActiveRecord::Base
-    def self.all_ratings
-        return pluck(:rating).uniq
+    def self.all_locations
+        return pluck(:location).uniq
     end
 end

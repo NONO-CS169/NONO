@@ -15,9 +15,14 @@ ActiveRecord::Schema.define(version: 20150809022253) do
 
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"
-    t.string   "rating"
-    t.text     "description"
-    t.datetime "location"
+    t.string   "hyperlink"
+    t.text     "location"
+    t.text     "person_added"
+    t.text     "county"
+    t.text     "p_type"
+    t.text     "j_type"
+    t.text     "season"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

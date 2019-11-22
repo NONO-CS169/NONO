@@ -4,15 +4,29 @@
 
 %ul#details
   %li
-    Rating:
-    = @venue.rating
+    Hyperlink:
+    = @venue.hyperlink
   %li
     Location:
     = @venue.location
-
-%h4 Description:
-
-%p#description= @venue.description
+  %li
+    Person Added:
+    = @venue.person_added
+  %li
+    County:
+    = @venue.county
+  %li
+    P Type:
+    = @venue.p_type
+  %li
+    J Type:
+    = @venue.j_type
+  %li
+    Season:
+    = @venue.season
+   %li
+    Notes:
+    = @venue.notes
 
 = link_to 'Edit', edit_venue_path(@venue)
 = button_to 'Delete', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-primary'

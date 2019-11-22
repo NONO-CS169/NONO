@@ -4,13 +4,31 @@
 
 = form_tag venue_path(@venue), :method => :put do
 
-  = label :venue, :venue_name, 'Venue Name'
+  = label :venue, :venue_name, 'Venue'
   = text_field :venue_name, 'venue_name'
 
-  = label :venue, :rating, 'Rating'
-  = select :venue, :rating, [1, 2, 3, 4, 5]
+  = label :venue, :hyperlink, 'Hyperlink'
+  = text_field :hyperlink, 'hyperlink'
 
   = label :venue, :location, 'Location'
-  = date_select :venue, :location
+  = location_select :venue, :location
+
+  =label :venue, :person_added, 'Person Added'
+  =text_field :person_added, 'person_added'
+
+  =label :venue, :county, 'County'
+  =text_field :county, 'county'
+
+  =label :venue, :p_type, 'P Type'
+  =text_field :p_type, 'p_type'
+
+  =label :venue, :j_type, 'J Type'
+  =text_field :j_type, 'j_type'
+
+  =label :venue, :season, 'Season'
+  =text_field :season, 'season'
+
+  =label :venue, :notes, 'Notes'
+  =text_field :notes, 'notes'
 
   = submit_tag 'Update Venue Info', :class => 'btn btn-primary'

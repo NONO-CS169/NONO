@@ -1,12 +1,12 @@
 -#  This file is app/views/venues/index.html.haml
 %h2 All Venues
 
-= form_tag venues_path, :method => :get, id: 'ratings_form' do
+= form_tag venues_path, :method => :get, id: 'locations_form' do
   Include:
-  - @all_ratings.each do |rating|
-    = rating
-    = check_box_tag "ratings[#{rating}]", 1 , (@ratings.include? rating), id: "ratings_#{rating}"
-  = submit_tag 'Refresh', :class => 'btn btn-primary', id: 'ratings_submit'
+  - @all_locations.each do |location|
+    = location
+    = check_box_tag "locations[#{location}]", 1 , (@locations.include? location), id: "locations_#{location}"
+  = submit_tag 'Refresh', :class => 'btn btn-primary', id: 'locations_submit'
 
 %table#venues.table.table-striped.col-md-12
   %thead
@@ -19,8 +19,14 @@
     - @venues.each do |venue|
       %tr
         %td= venue.venue_name
-        %td= venue.rating
+        %td= venue.hyperlink
         %td= venue.location
+        %td= venue.person_added
+        %td= venue.county
+        %td= venue.p_type
+        %td= venue.j_type
+        %td= venue.season
+        %td= venue.notes
         %td= link_to "More about #{venue.venue_name}", venue_path(venue)
 
 = link_to 'Add new venue', new_venue_path

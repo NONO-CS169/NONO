@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
 
   def venue_params
-    params.require(:venue).permit(:venue_name, :rating, :description, :location)
+    params.require(:venue).permit(:venue_name, :hyperlink, :location, :person_added, :county, :p_type, :j_type, :season, :notes)
   end
 
   def show
@@ -11,7 +11,7 @@ class VenuesController < ApplicationController
   end
 
   def index
-    @all_ratings = Venue.all_ratings
+    @all_locations = Venue.all_locations
     sort_by = params[:sort] || session[:sort]
     session[:sort] = sort_by
     if sort_by
@@ -19,24 +19,24 @@ class VenuesController < ApplicationController
       @table_header = 'hilite' if sort_by == 'venue_name'
     end
 
-    if params.keys.include? "ratings"
-      if params[:ratings].is_a? Hash
-        @ratings = params[:ratings].keys 
+    if params.keys.include? "locations"
+      if params[:locations].is_a? Hash
+        @locations = params[:locations].keys 
       end
-      if params[:ratings].is_a? Array
-        @ratings = params[:ratings] 
+      if params[:locations].is_a? Array
+        @locations = params[:locations] 
       end
-    elsif session.keys.include? "ratings"
-      @ratings = session[:ratings]
+    elsif session.keys.include? "locations"
+      @locations = session[:locations]
     else
-      @ratings = @all_ratings
+      @locations = @all_locations
     end
-    session[:ratings] = @ratings
+    session[:locations] = @locations
     flash.keep
-    if ! ((params.keys.include? 'sort') || (params.keys.include? 'ratings'))
-      redirect_to venues_path(:sort => session[:sort], :ratings => session[:ratings])
+    if ! ((params.keys.include? 'sort') || (params.keys.include? 'locations'))
+      #redirect_to venues_path(:sort => session[:sort], :locations => session[:locations])
     end
-    @venues = Venue.where(:rating => @ratings).order(sort_by)
+    @venues = Venue.where(:location => @locations).order(sort_by)
   end
 
   def new
