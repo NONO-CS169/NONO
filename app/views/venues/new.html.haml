@@ -1,0 +1,14 @@
+%h2 Create New Venue
+
+= form_tag venues_path do
+
+  = label :venue, :venue_name, 'Venue Name'
+  = text_field :venue, 'venue_name'
+
+  = label :venue, :rating, 'Rating'
+  = select :venue, :rating, [1, 2, 3, 4, 5]
+
+  = label :venue, :location, 'Location'
+  = location_select :venue, :location
+
+  = submit_tag 'Save Changes', :class => 'btn btn-primary'
