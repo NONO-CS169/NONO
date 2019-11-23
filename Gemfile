@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'themoviedb'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,5 +56,3 @@ group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
 end
-
-
