@@ -8,17 +8,22 @@
     = csrf_meta_tags
 
     %body
-      %div.container{:style => "width: 100%; position: relative;"}
-        %img{:src => "/assets/bay-bridge-night.jpg", :style => "max-width: 100%; max-height: 100%; margin: auto; display: block; opacity: 85%;"}
+      %div.container{:style => "width: 100%; position: relative; align: center;"}
+        %img{:src => "/assets/bay-bridge-night.jpg", :style => "width: 100%; opacity: 85%;"}
         %div{:style => "position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);"}
           %h1.title{:style => "color: white;"} Night On Night Off
-        %div{:style => "position: absolute; top: 8px; right: 16px;"}
+        %div{:style => "position: absolute; top: 16px; right: 30px;"}
+          = link_to 'Home', root_path, style: 'color:white;'
+          &emsp;
           - if current_user
-            = link_to 'Log Out', destroy_user_session_path, :method => :delete
+            = link_to 'Log Out', destroy_user_session_path, style: 'color:white;', :method => :delete
           - else
-            = link_to 'Login', new_user_session_path
-
-          = link_to 'Sign Up', new_user_registration_path
+            = link_to 'Login', new_user_session_path, style: 'color:white;'
+          &emsp;
+          = link_to 'Sign Up', new_user_registration_path, style: 'color:white; border:1px; border-style:solid; border-color:white; padding: 0.5em;'
+        %div{:style => "position: absolute; top: 16px; left: 30px;"}
+          = link_to 'Write a Review', style: 'color:white;'
+      <br>
 
       %div.container
         #main
