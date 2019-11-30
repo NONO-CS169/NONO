@@ -21,10 +21,10 @@ class VenuesController < ApplicationController
 
     if params.keys.include? "ratings"
       if params[:ratings].is_a? Hash
-        @ratings = params[:ratings].keys 
+        @ratings = params[:ratings].keys
       end
       if params[:ratings].is_a? Array
-        @ratings = params[:ratings] 
+        @ratings = params[:ratings]
       end
     elsif session.keys.include? "ratings"
       @ratings = session[:ratings]
@@ -33,9 +33,12 @@ class VenuesController < ApplicationController
     end
     session[:ratings] = @ratings
     flash.keep
-    if ! ((params.keys.include? 'sort') || (params.keys.include? 'ratings'))
-      redirect_to venues_path(:sort => session[:sort], :ratings => session[:ratings])
-    end
+
+    ## Commented out because this block is causing too many redirects
+    # if ! ((params.keys.include? 'sort') || (params.keys.include? 'ratings'))
+    #   redirect_to venues_path(:sort => session[:sort], :ratings => session[:ratings])
+    # end
+
     @venues = Venue.where(:rating => @ratings).order(sort_by)
   end
 
