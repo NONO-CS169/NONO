@@ -1,3 +1,36 @@
 table#venues th.hilite {
     background-color: yellow;
 }
+
+.form-box {
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: auto;
+  padding: 25px;
+  width: 50%;
+}
+
+.submit_button {
+  border-radius:40px;
+  background: white;
+  border: 2px solid #284B63;
+  color: #284B63;
+  cursor: pointer;
+  height: 40px;
+  letter-spacing:1px;
+  outline: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  text-shadow:0;
+  transition: all 0.25s ease;
+  font: {
+    size:12px;
+    weight:bold;
+  }
+}
+
+.submit_button:hover {
+  color: white;
+  background: #284B63;
+}
