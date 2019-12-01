@@ -35,17 +35,14 @@ table#venues th.hilite {
   background: #284B63;
 }
 
-.footer_button:hover {
-  border-radius: 40px;
+.footer_button {
   background: white;
   color: black;
   cursor: pointer;
-  height: 40px;
-  letter-spacing:1px;
-  outline: none;
-  padding-left: 10px;
+  letter-spacing: 1px;
   text-align: left;
   transition: all 0.25s ease;
+  text-decoration: none;
   font: {
     size:12px;
     weight:bold;
@@ -53,6 +50,7 @@ table#venues th.hilite {
 }
 
 .footer_button:hover {
-  color: white;
   background: black;
+  color: white;
+  text-decoration: none;
 }
