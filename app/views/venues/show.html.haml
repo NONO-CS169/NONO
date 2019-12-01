@@ -1,19 +1,18 @@
 -# in app/views/venues/show.html.haml
 
-%h3 Details about #{@venue.venue_name}
+%h4 Details about
+%h2{:style => "color:#235789;"} #{@venue.venue_name}
+%p Rated #{@venue.rating}/5 <br> Located in #{@venue.location}
 
-%ul#details
-  %li
-    Rating:
-    = @venue.rating
-  %li
-    Location:
-    = @venue.location
-
-%h4 Description:
+%h4 Description
 
 %p#description= @venue.description
 
-= link_to 'Edit', edit_venue_path(@venue)
-= button_to 'Delete', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-primary'
-= link_to 'Back to venue list', venues_path
+<br>
+<hr>
+
+= link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'
+<br>
+= link_to 'Edit Event', edit_venue_path(@venue), :class => 'link_button'
+<br>
+= link_to 'Back Home', venues_path, :class => 'link_button'
