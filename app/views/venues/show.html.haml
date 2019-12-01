@@ -1,16 +1,10 @@
 -# in app/views/venues/show.html.haml
 
-%h3 Details about #{@venue.venue_name}
+%h4 Details about
+%h2{:style => "color:#235789;"} #{@venue.venue_name}
+%p Rated #{@venue.rating}/5 <br> Located in #{@venue.location}
 
-%ul#details
-  %li
-    Rating:
-    = @venue.rating
-  %li
-    Location:
-    = @venue.location
-
-%h4 Description:
+%h4 Description
 
 %p#description= @venue.description
 

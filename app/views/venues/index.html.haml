@@ -1,26 +1,37 @@
 -#  This file is app/views/venues/index.html.haml
-%h2 All Venues
+%div.container
+  %h3{:style => "color:#235789;"} Venues
 
-= form_tag venues_path, :method => :get, id: 'ratings_form' do
-  Include:
-  - @all_ratings.each do |rating|
-    = rating
-    = check_box_tag "ratings[#{rating}]", 1 , (@ratings.include? rating), id: "ratings_#{rating}"
-  = submit_tag 'Refresh', :class => 'btn btn-primary', id: 'ratings_submit'
+  = form_tag venues_path, :method => :get, id: 'ratings_form' do
+    Include:
+    - @all_ratings.each do |rating|
+      = rating
+      = check_box_tag "ratings[#{rating}]", 1 , (@ratings.include? rating), id: "ratings_#{rating}"
+    = submit_tag 'Refresh', :class => 'btn btn-primary', id: 'ratings_submit'
 
-%table#venues.table.table-striped.col-md-12
-  %thead
-    %tr
-      %th{class: @table_header}= link_to "Venue Name", venues_path(:sort => "venue_name"), :id => "venue_name_header"
-      %th Rating
-      %th{class: @location_header}= link_to "Location", venues_path(:sort => "location"), :id => "location_header"
-      %th More Info
-  %tbody
-    - @venues.each do |venue|
+  %table#venues.table.table-striped.col-md-12
+    %thead
       %tr
-        %td= venue.venue_name
-        %td= venue.rating
-        %td= venue.location
-        %td= link_to "More about #{venue.venue_name}", venue_path(venue)
+        %th{class: @table_header}= link_to "Venue Name", venues_path(:sort => "venue_name"), :id => "venue_name_header"
+        %th Rating
+        %th{class: @location_header}= link_to "Location", venues_path(:sort => "location"), :id => "location_header"
+        %th More Info
+    %tbody
+      - @venues.each do |venue|
+        %tr
+          %td= venue.venue_name
+          %td= venue.rating
+          %td= venue.location
+          %td= link_to "More about #{venue.venue_name}", venue_path(venue)
 
-= link_to 'Add new venue', new_venue_path
+  = link_to 'Add new venue', new_venue_path, :class => "link_button"
+
+%br
+%div.container
+  %h3{:style => "color:#235789;"} Recent Activity
+  %p TODO: Populate with recent reviews
+
+%br
+%div.container
+  %h3{:style => "color:#235789;"} Browse Events by Category
+  %p TODO: Populate with squares, allow one to choose by filters
