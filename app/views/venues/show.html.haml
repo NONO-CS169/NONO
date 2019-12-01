@@ -8,6 +8,11 @@
 
 %p#description= @venue.description
 
-= link_to 'Edit', edit_venue_path(@venue)
-= button_to 'Delete', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-primary'
-= link_to 'Back to venue list', venues_path
+<br>
+<hr>
+
+= link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'
+<br>
+= link_to 'Edit Event', edit_venue_path(@venue), :class => 'link_button'
+<br>
+= link_to 'Back Home', venues_path, :class => 'link_button'
