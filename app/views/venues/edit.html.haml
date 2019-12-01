@@ -1,16 +1,20 @@
 -# edit.html.haml using partial
 
-%h2 Edit Existing Venue
+%div{:class => "form-box"}
+  %h2{:style => "text-align: center;"} Edit Existing Venue
+  <br>
+  = form_tag venue_path(@venue), :method => :put do
 
-= form_tag venue_path(@venue), :method => :put do
-
-  = label :venue, :venue_name, 'Venue Name'
-  = text_field :venue_name, 'venue_name'
-
-  = label :venue, :rating, 'Rating'
-  = select :venue, :rating, [1, 2, 3, 4, 5]
-
-  = label :venue, :location, 'Location'
-  = date_select :venue, :location
-
-  = submit_tag 'Update Venue Info', :class => 'btn btn-primary'
+    = label :venue, :venue_name, 'Venue Name'
+    = text_field :venue_name, 'venue_name'
+    <br><br>
+    = label :venue, :rating, 'Rating'
+    = select :venue, :rating, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :venue, :location, 'Location'
+    = text_field :venue, :location
+    <br><br>
+    = label :venue, :description, 'Description'
+    = text_field :venue, :description
+    <br><br>
+    = submit_tag 'Update Venue Info', :class => 'btn btn-primary'
