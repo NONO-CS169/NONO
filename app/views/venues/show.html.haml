@@ -10,7 +10,7 @@
 <hr>
 %h4 Reviews
 
-= link_to 'Write a Review!', new_review_path()
+= link_to 'Write a Review!', new_venue_review_path(venue_id: @venue)
 <br>
 <br>
 - @reviews.each do |review|
