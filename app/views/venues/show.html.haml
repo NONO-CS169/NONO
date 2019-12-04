@@ -2,7 +2,7 @@
 
 %h4 Details about
 %h2{:style => "color:#235789;"} #{@venue.venue_name}
-%p Rated #{@venue.rating}/5 <br> Located in #{@venue.location}
+%p Rated #{@average.round(2)}/5 <br> Located in #{@venue.location}
 
 %h4 Description
 
@@ -10,6 +10,9 @@
 <hr>
 %h4 Reviews
 
+= link_to 'Write a Review!', new_review_path()
+<br>
+<br>
 - @reviews.each do |review|
     = review.stars
     Stars 
