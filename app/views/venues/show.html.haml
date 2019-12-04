@@ -2,17 +2,38 @@
 
 %h4 Details about
 %h2{:style => "color:#235789;"} #{@venue.venue_name}
-%p Rated #{@venue.rating}/5 <br> Located in #{@venue.location}
 
+Rated #{@venue.rating}/5 <br>
+- if @venue.season.present?
+  Season: #{@venue.season} <br>
+- if @venue.location.present?
+  Located in
+- if @venue.county.present?
+  #{@venue.county} County,
+- if @venue.location.present?
+  #{@venue.location}
+
+%br
+%br
 %h4 Description
 
 %p#description= @venue.description
 
+- if @venue.ptype.present? || @venue.jtype.present?
+  This event has been categorized under
+  - if @venue.ptype.present?
+    #{@venue.ptype}
+  - if @venue.ptype.present?
+    , #{@venue.jtype}
+
+%br
+%br
 %h4 External Links
 
 %p#links= @venue.link
 
-<br>
+- if @venue.name.present?
+  %p This event was added by #{@venue.name}
 <hr>
 
 = link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'
