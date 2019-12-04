@@ -5,6 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+@user = User.find_or_initialize_by(email: 'user1@gmail.com')
+@user.update_attributes(
+    email: 'user1@gmail.com',
+    password: 'password',
+    password_confirmation: 'password',
+)
 
 venues = [{:venue_name => 'UC Berkeley', :rating => 5, :location => 'Berkeley', :description => '#1 Public University in the United States'},
     	   {:venue_name => 'Stanford', :rating => 0, :location => 'Stanford', :description => 'Not the #1 Public University in the United States'},
@@ -13,5 +19,8 @@ venues = [{:venue_name => 'UC Berkeley', :rating => 5, :location => 'Berkeley', 
   	 ]
 
 venues.each do |venue|
-  Venue.create!(venue)
+  v = Venue.create!(venue)
+  Review.create(stars: 5, text: "Amazing", venue_id: v.id, user_id: @user.id)
+  Review.create(stars: 4, text: "Okay", venue_id: v.id, user_id: @user.id)
+  Review.create(stars: 2, text: "Terrible", venue_id: v.id, user_id: @user.id)
 end

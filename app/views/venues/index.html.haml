@@ -29,7 +29,8 @@
 %br
 %div.container
   %h3{:style => "color:#235789;"} Recent Activity
-  %p TODO: Populate with recent reviews
+  %p #{@review.created_at.to_date} by: #{@review.user.email}
+  %p #{@review.venue.venue_name}: "#{@review.text}"
 
 %br
 %div.container

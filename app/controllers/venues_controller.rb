@@ -42,7 +42,7 @@ class VenuesController < ApplicationController
 
 
         @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval).order(sort_by)
-
+        @review = Review.last
       #redirect_to venues_path
       return
   end
