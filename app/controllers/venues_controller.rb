@@ -11,7 +11,7 @@ class VenuesController < ApplicationController
   end
 
   def index
-        @all_ratings = ['0', '1', '2', '3' ,'4','5']
+        @all_ratings = ['1', '2', '3' ,'4', '5']
         sort_by = params[:sort] || session[:sort]
         session[:sort] = sort_by
         if sort_by
