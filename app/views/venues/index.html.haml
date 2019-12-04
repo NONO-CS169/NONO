@@ -23,11 +23,13 @@
           %td= venue.rating
           %td= venue.location
           %td= link_to "More about #{venue.venue_name}", venue_path(venue)
+  = link_to 'Add new venue', new_venue_path, :class => "link_button", :style => "border: 3px solid black; padding: 5px;"
+  %br
 
-  = link_to 'Add new venue', new_venue_path, :class => "link_button"
-
-  .text-center
-    = will_paginate @venues, renderer: BootstrapPagination::Rails
+  %div{:class => @digg_pagination, :style => "margin:auto; width:50%; text-align:center;"}
+    %div{:class => @page_info}
+      = page_entries_info @venues
+    = will_paginate @venues, :container => false
 
 %br
 %div.container
