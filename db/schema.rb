@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20191107181457) do
 
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"
-    t.string   "rating"
+    t.float   "rating"
     t.text     "description"
     t.text     "location"
     t.datetime "created_at"
