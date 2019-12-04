@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'themoviedb'
 gem 'devise'
 
+# use roo for parsing excel
+gem "roo", "~> 2.8.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,9 +44,9 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'guard-rspec'
-  
+
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

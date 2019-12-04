@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
 
   def venue_params
-    params.require(:venue).permit(:venue_name, :rating, :description, :location)
+    params.require(:venue).permit(:venue_name, :link, :location)
   end
 
   def show
@@ -11,7 +11,7 @@ class VenuesController < ApplicationController
   end
 
   def index
-        @all_ratings = ['0', '1', '2', '3' ,'4','5']
+        @all_ratings = ['1', '2', '3' ,'4', '5']
         sort_by = params[:sort] || session[:sort]
         session[:sort] = sort_by
         if sort_by
