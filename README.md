@@ -21,7 +21,7 @@ rails server
 
 The server should be spun up accordingly and the website will be available at `http://localhost:3000`.
 
-To instantiate the mock database, run the command `rake db:seed`. This will populate the database with events from the `db/seeds.rb` file.
+To instantiate the mock database, run the command `rake db:reset db:migrate`. This will populate the database with events from the `db/seeds.rb` file.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -15,24 +15,31 @@
         %th{class: @table_header}= link_to "Venue Name", venues_path(:sort => "venue_name"), :id => "venue_name_header"
         %th Rating
         %th{class: @location_header}= link_to "Location", venues_path(:sort => "location"), :id => "location_header"
+        %th Season
         %th More Info
     %tbody
       - @venues.each do |venue|
         %tr
           %td= venue.venue_name
-          %td= venue.rating
+          %td= venue.reviews.length == 0 ? 0 : venue.reviews.average(:stars).round(0)
           %td= venue.location
+          %td= venue.season
           %td= link_to "More about #{venue.venue_name}", venue_path(venue)
+  = link_to 'Add new venue', new_venue_path, :class => "link_button", :style => "border: 3px solid black; padding: 5px;"
+  %br
 
-  = link_to 'Add new venue', new_venue_path, :class => "link_button"
+  %div{:class => @digg_pagination, :style => "margin:auto; width:50%; text-align:center;"}
+    %div{:class => @page_info}
+      = page_entries_info @venues
+    = will_paginate @venues, :container => false
 
 %br
-%div.container
+%div.container#Activity
   %h3{:style => "color:#235789;"} Recent Activity
   %p #{@review.created_at.to_date} by: #{@review.user.email}
   %p #{@review.venue.venue_name}: "#{@review.text}"
 
 %br
-%div.container
+%div.container#Categories
   %h3{:style => "color:#235789;"} Browse Events by Category
   %p TODO: Populate with squares, allow one to choose by filters

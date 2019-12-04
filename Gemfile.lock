@@ -162,6 +162,9 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    roo (2.8.2)
+      nokogiri (~> 1)
+      rubyzip (>= 1.2.1, < 2.0.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -183,6 +186,7 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
+    rubyzip (1.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -227,6 +231,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.1.8)
+    will_paginate-bootstrap (1.0.2)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -242,6 +249,7 @@ DEPENDENCIES
   pg (~> 0.21)
   rails (= 4.2.10)
   rails_12factor
+  roo (~> 2.8.0)
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -251,9 +259,11 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  will_paginate (~> 3.1.1)
+  will_paginate-bootstrap
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.6.4p104
 
 BUNDLED WITH
    1.17.3

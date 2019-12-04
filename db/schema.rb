@@ -41,9 +41,13 @@ ActiveRecord::Schema.define(version: 20191204082707) do
 
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"
-    t.string   "rating"
-    t.text     "description"
-    t.text     "location"
+    t.string   "link"
+    t.string   "location"
+    t.string   "name"
+    t.string   "county"
+    t.string   "ptype"
+    t.string   "jtype"
+    t.string   "season"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
