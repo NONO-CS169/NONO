@@ -6,12 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-venues = [{:venue_name => 'UC Berkeley', :rating => 5, :location => 'Berkeley', :description => '#1 Public University in the United States'},
-    	   {:venue_name => 'Stanford', :rating => 0, :location => 'Stanford', :description => 'Not the #1 Public University in the United States'},
-         {:venue_name => 'Thai Basil', :rating => 4.6, :location => 'Berkeley', :description => 'Affordable, authentic Thai food'},
-         {:venue_name => 'Wheeler Hall', :rating => 3.3, :location => 'Berkeley', :description => 'Lecture hall at UC Berkeley'}
-  	 ]
+require 'roo'
+path = Rails.root.join('db', 'test.xlsx').to_s
+xlsx = Roo::Spreadsheet.open path
 
-venues.each do |venue|
+xlsx.each(venue_name: "DRAFT VENUE LIST", link:	"Hyperlink", location:	"Location", name:	"Person who added (name)", county:	"County", ptype:	"P Type", jtype:	"J Type", season:	"Season (Y/N/S)") do |venue|
+  #puts venue
   Venue.create!(venue)
 end
