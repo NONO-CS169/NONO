@@ -11,44 +11,6 @@ class VenuesController < ApplicationController
   end
 
   def index
-#       @all_ratings = [0,1,2,3,4,5]
-#
-#       @rating_choices = @all_ratings
-#
-#       if params.has_key?("ratings")==false && session.has_key?("ratings")
-#           @rating_choices = session["ratings"]
-#           params["ratings"] = session["ratings"]
-#           if params.has_key?("sort") && session.has_key?("sort")==false
-#               session["sort"] = params["sort"]
-#               redirect_to venues_path(sort: params["sort"], ratings: session["ratings"])
-#           end
-#           if params.has_key?("sort")==false && session.has_key?("sort")
-#               redirect_to venues_path(sort: session["sort"], ratings: session["ratings"])
-#           end
-#           if params.has_key?("sort")==false && session.has_key?("sort")==false
-#               redirect_to venues_path(ratings:session["ratings"] )
-#           end
-#       end
-#
-#       if params.has_key?("sort")==false && session.has_key?("sort")
-#           params["sort"] = session["sort"]
-#           if params.has_key?("ratings") && session.has_key?("ratings")==false
-#               redirect_to venues_path(sort: params["sort"], ratings: params["ratings"])
-#           end
-#       end
-#       if params.has_key?("ratings")
-#           @rating_choices = params["ratings"]
-#           session["ratings"] = params["ratings"]
-#       end
-#       puts("Look here:")
-#       puts(session["ratings"])
-#       puts(@rating_choices)
-#       @venues = Venue.all
-#
-#       if params.has_key?("sort")
-#           @venues = @venues.order(params["sort"])
-#           session["sort"] = params["sort"]
-#       end
         @all_ratings = ['0', '1', '2', '3' ,'4','5']
         sort_by = params[:sort] || session[:sort]
         session[:sort] = sort_by
@@ -78,45 +40,11 @@ class VenuesController < ApplicationController
         minval = @ratings.min
         maxval = @ratings.max
 
-        #puts(minval)
-        #puts(maxval)
-        @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval)
-        #puts(@venues)
+
+        @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval).order(sort_by)
 
       #redirect_to venues_path
       return
-
-    #end
-#     @all_ratings = [0,1,2,3,4,5]
-#     sort_by = params[:sort] || session[:sort]
-#     session[:sort] = sort_by
-#     if sort_by
-#       @venues = Venue.order(sort_by)
-#       @table_header = 'hilite' if sort_by == 'venue_name'
-#     end
-#
-#     if params.keys.include? "ratings"
-#       if params[:ratings].is_a? Hash
-#         @ratings = params[:ratings].keys
-#       end
-#       if params[:ratings].is_a? Array
-#         @ratings = params[:ratings]
-#       end
-#     elsif session.keys.include? "ratings"
-#       @ratings = session[:ratings]
-#     else
-#       @ratings = @all_ratings
-#     end
-#     session[:ratings] = @ratings
-#     flash.keep
-#
-#     ## Commented out because this block is causing too many redirects
-#     # if ! ((params.keys.include? 'sort') || (params.keys.include? 'ratings'))
-#     #   redirect_to venues_path(:sort => session[:sort], :ratings => session[:ratings])
-#     # end
-    #for
-    #puts(@rating_choices)
-    #@venues = Venue.where(:rating => @rating_choices).order(sort_by)
   end
 
   def new
