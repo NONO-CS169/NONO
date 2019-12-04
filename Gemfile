@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> seeded database
 source 'https://rubygems.org'
 
 ruby '>=2.2.0', '<3.0'
