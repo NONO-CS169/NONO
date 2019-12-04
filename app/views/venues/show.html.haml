@@ -7,8 +7,21 @@
 %h4 Description
 
 %p#description= @venue.description
+<hr>
+%h4 Reviews
 
-<br>
+- @reviews.each do |review|
+    = review.stars
+    Stars 
+    <br>
+    Review: "#{review.text}"
+    <br>
+    by: #{review.user.email}
+    <br>
+    Number of Votes: #{review.votes}
+    = link_to "Upvote", review_upvote_path(@venue.id, review.id), :method => :post
+    = link_to "Downvote", review_downvote_path(@venue.id, review.id), :method => :post
+    <br><br>
 <hr>
 
 = link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'

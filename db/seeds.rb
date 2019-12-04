@@ -20,7 +20,7 @@ venues = [{:venue_name => 'UC Berkeley', :rating => 5, :location => 'Berkeley', 
 
 venues.each do |venue|
   v = Venue.create!(venue)
-  Review.create(stars: 5, text: "Amazing", venue_id: v.id, user_id: @user.id)
-  Review.create(stars: 4, text: "Okay", venue_id: v.id, user_id: @user.id)
-  Review.create(stars: 2, text: "Terrible", venue_id: v.id, user_id: @user.id)
+  Review.create(stars: 5, text: "Amazing", venue_id: v.id, user_id: @user.id, votes: 20)
+  Review.create(stars: 4, text: "Okay", venue_id: v.id, user_id: @user.id, votes: 10)
+  Review.create(stars: 2, text: "Terrible", venue_id: v.id, user_id: @user.id, votes: 0)
 end
