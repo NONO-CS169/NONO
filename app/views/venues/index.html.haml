@@ -26,6 +26,9 @@
 
   = link_to 'Add new venue', new_venue_path, :class => "link_button"
 
+  .text-center
+    = will_paginate @venues, renderer: BootstrapPagination::Rails
+
 %br
 %div.container
   %h3{:style => "color:#235789;"} Recent Activity

@@ -40,8 +40,7 @@ class VenuesController < ApplicationController
         minval = @ratings.min
         maxval = @ratings.max
 
-
-        @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval).order(sort_by)
+        @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval).order(sort_by).paginate(page: params[:page], per_page: 10)
 
       #redirect_to venues_path
       return

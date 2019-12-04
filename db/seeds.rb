@@ -12,6 +12,6 @@ xlsx = Roo::Spreadsheet.open path
 
 xlsx.each(venue_name: "DRAFT VENUE LIST", location:	"Location", name:	"Person who added (name)", county: "County", ptype:	"P Type", jtype:	"J Type", season: "Season (Y/N/S)", link:	"Hyperlink") do |venue|
   venue = venue.merge({rating: 1 + rand(5)})
-  puts venue
+  # puts venue
   Venue.create(venue)
 end
