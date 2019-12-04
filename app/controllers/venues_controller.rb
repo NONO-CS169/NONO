@@ -11,35 +11,40 @@ class VenuesController < ApplicationController
   end
 
   def index
-    @all_ratings = Venue.all_ratings
-    sort_by = params[:sort] || session[:sort]
-    session[:sort] = sort_by
-    if sort_by
-      @venues = Venue.order(sort_by)
-      @table_header = 'hilite' if sort_by == 'venue_name'
-    end
+        @all_ratings = ['0', '1', '2', '3' ,'4','5']
+        sort_by = params[:sort] || session[:sort]
+        session[:sort] = sort_by
+        if sort_by
+          @venues = Venue.order(sort_by)
+          @table_header = 'hilite' if sort_by == 'venue_name'
+        end
 
-    if params.keys.include? "ratings"
-      if params[:ratings].is_a? Hash
-        @ratings = params[:ratings].keys
-      end
-      if params[:ratings].is_a? Array
-        @ratings = params[:ratings]
-      end
-    elsif session.keys.include? "ratings"
-      @ratings = session[:ratings]
-    else
-      @ratings = @all_ratings
-    end
-    session[:ratings] = @ratings
-    flash.keep
+        if params.keys.include? "ratings"
+          if params[:ratings].is_a? Hash
+            @ratings = params[:ratings].keys
+          end
+          if params[:ratings].is_a? Array
+            @ratings = params[:ratings]
+          end
+        elsif session.keys.include? "ratings"
+          @ratings = session[:ratings]
+        else
+          @ratings = @all_ratings
+        end
+        session[:ratings] = @ratings
+        flash.keep
+        if ! ((params.keys.include? 'sort') || (params.keys.include? 'ratings'))
+            redirect_to venues_path(:sort => session[:sort], :ratings => session[:ratings])
+        end
 
-    ## Commented out because this block is causing too many redirects
-    # if ! ((params.keys.include? 'sort') || (params.keys.include? 'ratings'))
-    #   redirect_to venues_path(:sort => session[:sort], :ratings => session[:ratings])
-    # end
+        minval = @ratings.min
+        maxval = @ratings.max
 
-    @venues = Venue.where(:rating => @ratings).order(sort_by)
+
+        @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval).order(sort_by)
+
+      #redirect_to venues_path
+      return
   end
 
   def new
