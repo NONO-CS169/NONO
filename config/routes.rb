@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :venues
+  resources :reviews
+  post 'review/:venue/:id/upvote' => 'reviews#upvote', as: :review_upvote
+  post 'review/:venue/:id/downvote' => 'reviews#downvote', as: :review_downvote
+
   
   # Example resource route with options:
   #   resources :products do

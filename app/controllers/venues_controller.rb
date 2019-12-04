@@ -7,6 +7,7 @@ class VenuesController < ApplicationController
   def show
     id = params[:id] # retrieve venue ID from URI route
     @venue = Venue.find(id) # look up venue by unique ID
+    @reviews = @venue.reviews # venue's reviews
     # will render app/views/venues/show.<extension> by default
   end
 
