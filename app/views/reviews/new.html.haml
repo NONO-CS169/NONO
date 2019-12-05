@@ -1,0 +1,15 @@
+%div{:class => "form-box"}
+  %h2{:style => "text-align: center;"} Create New Review
+  <br>
+  = form_tag venue_reviews_path do
+
+    = label :review, :venue_name, 'Venue Name: '
+    #{@venue.venue_name}
+    <br><br>
+    = label :review, :stars, 'Stars'
+    = select :review, :stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :text, 'Text'
+    = text_area :review, :text
+    <br><br>
+    = submit_tag 'Create Review', :class => 'submit_button'

@@ -2,8 +2,8 @@
 
 %h4 Details about
 %h2{:style => "color:#235789;"} #{@venue.venue_name}
+%p Rating: #{@average == -1 ? "Not Rated. Add a Review!" : @average.round(2)/5} <br>
 
-Rated #{@venue.rating}/5 <br>
 - if @venue.season.present?
   Season: #{@venue.season} <br>
 - if @venue.location.present?
@@ -15,25 +15,39 @@ Rated #{@venue.rating}/5 <br>
 
 %br
 %br
-%h4 Description
+%h4 Reviews
 
-%p#description= @venue.description
-
+= link_to 'Write a Review!', new_venue_review_path(venue_id: @venue)
+<br>
+<br>
 - if @venue.ptype.present? || @venue.jtype.present?
   This event has been categorized under
   - if @venue.ptype.present?
     #{@venue.ptype}
-  - if @venue.ptype.present?
+  - if @venue.jtype.present?
     , #{@venue.jtype}
 
 %br
 %br
 %h4 External Links
 
-%p#links= @venue.link
+= link_to @venue.link, @venue.link
 
 - if @venue.name.present?
   %p This event was added by #{@venue.name}
+
+- @reviews.each do |review|
+  = review.stars
+  Stars
+  <br>
+  Review: "#{review.text}"
+  <br>
+  by: #{review.user.email}
+  <br>
+  Number of Votes: #{review.votes}
+  = link_to "Upvote", review_upvote_path(@venue.id, review.id), :method => :post
+  = link_to "Downvote", review_downvote_path(@venue.id, review.id), :method => :post
+  <br><br>
 <hr>
 
 = link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'

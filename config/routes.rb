@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :venues
+  resources :venues do
+  	resources :reviews, except: [:index, :show]
+  end
+
+  post 'review/:venue/:id/upvote' => 'reviews#upvote', as: :review_upvote
+  post 'review/:venue/:id/downvote' => 'reviews#downvote', as: :review_downvote
+
   
   # Example resource route with options:
   #   resources :products do

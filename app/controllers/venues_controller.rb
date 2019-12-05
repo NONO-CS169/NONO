@@ -1,12 +1,14 @@
 class VenuesController < ApplicationController
 
   def venue_params
-    params.require(:venue).permit(:venue_name, :link, :location)
+    params.require(:venue).permit(:venue_name, :link, :location, :season)
   end
 
   def show
     id = params[:id] # retrieve venue ID from URI route
     @venue = Venue.find(id) # look up venue by unique ID
+    @reviews = @venue.reviews # venue's reviews
+    @average = @reviews.length == 0 ? -1 : @reviews.average(:stars)
     # will render app/views/venues/show.<extension> by default
   end
 
@@ -40,8 +42,8 @@ class VenuesController < ApplicationController
         minval = @ratings.min
         maxval = @ratings.max
 
-        @venues = Venue.where("rating >= ? AND rating <= ?", minval,maxval).order(sort_by).paginate(page: params[:page], per_page: 10)
-
+        @venues = Venue.order(sort_by).paginate(page: params[:page], per_page: 10)
+        @review = Review.last
       #redirect_to venues_path
       return
   end
