@@ -1,24 +1,48 @@
 -# in app/views/venues/show.html.haml
 
-%h4 Details about
 %h2{:style => "color:#235789;"} #{@venue.venue_name}
+<br>
+%h4 Ratings
+%table{:border => 1}
+  %tbody
+    %tr
+      %td Audience Inclusion Rating:
+      %td Programming Representation Rating:
+      %td Food Representation Rating:
+      %td Personal Comfort Rating:
 
-%p Audience Inclusion Rating: #{@included_audience_stars_average == -1 ? "Not Rated. Add a Review!" : @included_audience_stars_average.round(2)}/5 <br>
-%p Programming Representation Rating: #{@programming_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @programming_representation_stars_average.round(2)}/5 <br>
-%p Food Representation Rating: #{@food_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @food_representation_stars_average.round(2)}/5 <br>
-%p Personal Comfort Rating: #{@personal_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @personal_comfort_stars_average.round(2)}/5 <br>
-%p Staff Rating: #{@staff_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @staff_comfort_stars_average.round(2)}/5 <br>
-%p Cast Representation Rating: #{@cast_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @cast_representation_stars_average.round(2)}/5 <br>
-%p Whole Venue Rating: #{@whole_venue_stars_average == -1 ? "Not Rated. Add a Review!" : @whole_venue_stars_average.round(2)}/5 <br>
-%p Show Overview Rating: #{@show_overview_stars_average == -1 ? "Not Rated. Add a Review!" : @show_overview_stars_average.round(2)}/5 <br>
+      %tr
+        %td= "#{@included_audience_stars_average == -1 ? "Not Rated. Add a Review!" : @included_audience_stars_average.round(2)}/5"
+        %td= "#{@programming_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @programming_representation_stars_average.round(2)}/5"
+        %td= "#{@food_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @food_representation_stars_average.round(2)}/5"
+        %td= "#{@personal_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @personal_comfort_stars_average.round(2)}/5"
+
+      %td Staff Rating:
+      %td Cast Representation Rating:
+      %td Whole Venue Rating:
+      %td Show Overview Rating:
+      %tr
+        %td= "#{@staff_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @staff_comfort_stars_average.round(2)}/5"
+        %td= "#{@cast_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @cast_representation_stars_average.round(2)}/5"
+        %td= "#{@cast_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @cast_representation_stars_average.round(2)}/5"
+        %td= "#{@show_overview_stars_average == -1 ? "Not Rated. Add a Review!" : @show_overview_stars_average.round(2)}/5"
+
 <br>
 
+%h4 Location
 - if @venue.location.present?
   Located in
 - if @venue.county.present?
   #{@venue.county} County,
 - if @venue.location.present?
   #{@venue.location}
+- if !@venue.location.present?
+  No Location Information
+%br
+%br
+%h4 External Links
+
+= link_to @venue.link, @venue.link
 
 %br
 %br
@@ -36,12 +60,9 @@
 
 %br
 %br
-%h4 External Links
-
-= link_to @venue.link, @venue.link
 
 <br><br>
-%h4 Reviews
+%h2{:style => "color:#235789;"} Reviews
 Sort Reviews: 
 = form_tag venue_sort_path, method: :get do
   = select(:sort, :name, options_for_select(@affinities))
@@ -49,9 +70,6 @@ Sort Reviews:
 
 <br>
 - @reviews.each do |review|
-  Affinity:
-  = review.affinity
-  <br>
 
   1. Audience Inclusion Rating: 
   = review.included_audience_stars
