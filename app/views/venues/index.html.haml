@@ -13,7 +13,7 @@
     %thead
       %tr
         %th{class: @table_header}= link_to "Venue Name", venues_path(:sort => "venue_name"), :id => "venue_name_header"
-        %th Rating
+        -# %th Rating
         %th{class: @location_header}= link_to "Location", venues_path(:sort => "location"), :id => "location_header"
         %th Season
         %th More Info
