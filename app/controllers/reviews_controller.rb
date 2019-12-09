@@ -40,6 +40,21 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.require(:review).permit(:stars, :text)
+        params.require(:review).permit(:included_audience_stars, 
+        :included_audience_text,
+        :programming_representation_stars,
+        :programming_representation_text,
+        :food_representation_stars,
+        :food_representation_text,
+        :personal_comfort_stars,
+        :personal_comfort_text,
+        :staff_comfort_stars,
+        :staff_comfort_text,
+        :cast_representation_stars,
+        :cast_representation_text,
+        :whole_venue_stars,
+        :whole_venue_text,
+        :show_overview_stars,
+        :show_overview_text)
     end
 end
