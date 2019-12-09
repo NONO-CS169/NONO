@@ -16,6 +16,13 @@ class VenuesController < ApplicationController
     @cast_representation_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:cast_representation_stars)
     @whole_venue_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:whole_venue_stars)
     @show_overview_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:show_overview_stars)
+    @affinities = [["All", "All"]]
+    Affinity.uniq.pluck(:name).each do |a|
+      @affinities << [a, a]
+    end
+    if params[:sort] != nil and params[:sort][:name] != "All"
+      @reviews = @venue.reviews.where(affinity: params[:sort][:name])
+    end
     # will render app/views/venues/show.<extension> by default
   end
 

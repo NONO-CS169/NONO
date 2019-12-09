@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
     def new
+        @affinities = Affinity.uniq.pluck(:name)
         if current_user
             set_restaurant()
         else
@@ -40,7 +41,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.require(:review).permit(:included_audience_stars, 
+        params.require(:review).permit(:affinity,:included_audience_stars, 
         :included_audience_text,
         :programming_representation_stars,
         :programming_representation_text,

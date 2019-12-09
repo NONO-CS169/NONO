@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   post 'review/:venue/:id/upvote' => 'reviews#upvote', as: :review_upvote
   post 'review/:venue/:id/downvote' => 'reviews#downvote', as: :review_downvote
-
+  get 'venues/:id/' => 'venues#sort', as: :venue_sort
   
   # Example resource route with options:
   #   resources :products do

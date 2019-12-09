@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191209040439) do
+ActiveRecord::Schema.define(version: 20191209053245) do
+
+  create_table "affinities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "votes"
@@ -35,6 +41,7 @@ ActiveRecord::Schema.define(version: 20191209040439) do
     t.text     "whole_venue_text"
     t.integer  "show_overview_stars"
     t.text     "show_overview_text"
+    t.string   "affinity"
   end
 
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
