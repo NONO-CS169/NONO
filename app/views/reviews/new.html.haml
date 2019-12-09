@@ -5,11 +5,73 @@
 
     = label :review, :venue_name, 'Venue Name: '
     #{@venue.venue_name}
+
+    = label :review, :venue_name, '(For star ratings: 1 is worst and 5 is best.)'
     <br><br>
+    = label :review, :venue_name, '1. Do you feel that the audience at this venue included other people of your affinity group(s)?'
     = label :review, :stars, 'Stars'
-    = select :review, :stars, [1, 2, 3, 4, 5]
+    = select :review, :included_audience_stars, [1, 2, 3, 4, 5]
     <br><br>
-    = label :review, :text, 'Text'
+    = label :review, :included_audience_text, 'Text'
     = text_area :review, :text
     <br><br>
+
+    = label :review, :venue_name, '2. Do you feel that the programing that you attended at was catered to your affinity group(s)?'
+    = label :review, :stars, 'Stars'
+    = select :review, :programming_representation_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :programming_representation_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
+    = label :review, :venue_name, '3. Do you feel that the food at this venue catered to people of your affinity group(s)?'
+    = label :review, :stars, 'Stars'
+    = select :review, :food_representation_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :food_representation_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
+
+    = label :review, :venue_name, '4. Did you feel comfortable in this venue?'
+    = label :review, :stars, 'Stars'
+    = select :review, :personal_comfort_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :personal_comfort_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
+    = label :review, :venue_name, '5. When you were at this venue, did you feel like you were treated well by its staff?'
+    = label :review, :stars, 'Stars'
+    = select :review, :staff_comfort_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :staff_comfort_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
+    = label :review, :venue_name, '6. Was your affinity group(s) represented in the cast or content of the show?'
+    = label :review, :stars, 'Stars'
+    = select :review, :cast_representation_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :cast_representation_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
+    = label :review, :venue_name, '7. What did you think about the venue as a whole? Tell us what you thought about the venue and your viewing experience.'
+    = label :review, :stars, 'Stars'
+    = select :review, :whole_venue_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :whole_venue_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
+    = label :review, :venue_name, '8. What show did you see and what did you think?'
+    <br>
+    = label :review, :stars, 'Stars'
+    = select :review, :show_overview_stars, [1, 2, 3, 4, 5]
+    <br><br>
+    = label :review, :show_overview_text, 'Text'
+    = text_area :review, :text
+    <br><br>
+
     = submit_tag 'Create Review', :class => 'submit_button'
