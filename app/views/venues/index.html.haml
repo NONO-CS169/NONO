@@ -21,7 +21,7 @@
       - @venues.each do |venue|
         %tr
           %td= venue.venue_name
-          %td= venue.reviews.length == 0 ? 0 : venue.reviews.average(:stars).round(0)
+          -# %td= venue.reviews.length == 0 ? 0 : venue.reviews.average(:stars).round(0)
           %td= venue.location
           %td= venue.season
           %td= link_to "More about #{venue.venue_name}", venue_path(venue)
@@ -37,7 +37,7 @@
 %div.container#Activity
   %h3{:style => "color:#235789;"} Recent Activity
   %p #{@review.created_at.to_date} by: #{@review.user.email}
-  %p #{@review.venue.venue_name}: "#{@review.text}"
+  %p #{@review.venue.venue_name}: "#{@review.included_audience_text}"
 
 %br
 %div.container#Categories

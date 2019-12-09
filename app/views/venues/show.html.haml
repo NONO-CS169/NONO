@@ -2,10 +2,17 @@
 
 %h4 Details about
 %h2{:style => "color:#235789;"} #{@venue.venue_name}
-%p Rating: #{@average == -1 ? "Not Rated. Add a Review!" : @average.round(2)/5} <br>
 
-- if @venue.season.present?
-  Season: #{@venue.season} <br>
+%p Audience Inclusion Rating: #{@included_audience_stars_average == -1 ? "Not Rated. Add a Review!" : @included_audience_stars_average.round(2)}/5 <br>
+%p Programming Representation Rating: #{@programming_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @programming_representation_stars_average.round(2)}/5 <br>
+%p Food Representation Rating: #{@food_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @food_representation_stars_average.round(2)}/5 <br>
+%p Personal Comfort Rating: #{@personal_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @personal_comfort_stars_average.round(2)}/5 <br>
+%p Staff Rating: #{@staff_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @staff_comfort_stars_average.round(2)}/5 <br>
+%p Cast Representation Rating: #{@cast_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @cast_representation_stars_average.round(2)}/5 <br>
+%p Whole Venue Rating: #{@whole_venue_stars_average == -1 ? "Not Rated. Add a Review!" : @whole_venue_stars_average.round(2)}/5 <br>
+%p Show Overview Rating: #{@show_overview_stars_average == -1 ? "Not Rated. Add a Review!" : @show_overview_stars_average.round(2)}/5 <br>
+<br>
+
 - if @venue.location.present?
   Located in
 - if @venue.county.present?
@@ -33,15 +40,65 @@
 
 = link_to @venue.link, @venue.link
 
-- if @venue.name.present?
-  %p This event was added by #{@venue.name}
-
+<br><br>
 - @reviews.each do |review|
-  = review.stars
-  Stars
+
+  1. Audience Inclusion Rating: 
+  = review.included_audience_stars
+  Star
   <br>
-  Review: "#{review.text}"
+  Review: "#{review.included_audience_text}"
   <br>
+
+  2. Programming Representation Rating: 
+  = review.programming_representation_stars
+  Star
+  <br>
+  Review: "#{review.programming_representation_text}"
+  <br>
+
+  3. Food Representation Rating: 
+  = review.food_representation_stars
+  Star
+  <br>
+  Review: "#{review.food_representation_text}"
+  <br>
+
+  4. Personal Comfort Rating: 
+  = review.personal_comfort_stars
+  Star
+  <br>
+  Review: "#{review.personal_comfort_text}"
+  <br>
+
+  5. Staff Rating: 
+  = review.staff_comfort_stars
+  Star
+  <br>
+  Review: "#{review.staff_comfort_text}"
+  <br>
+
+  6. Cast Representation Rating: 
+  = review.cast_representation_stars
+  Star
+  <br>
+  Review: "#{review.cast_representation_text}"
+  <br>
+  
+  7. Whole Venue Rating: 
+  = review.whole_venue_stars
+  Star
+  <br>
+  Review: "#{review.whole_venue_text}"
+  <br>
+
+  8. Show Overview Rating: 
+  = review.show_overview_stars
+  Star
+  <br>
+  Review: "#{review.show_overview_text}"
+  <br>
+
   by: #{review.user.email}
   <br>
   Number of Votes: #{review.votes}

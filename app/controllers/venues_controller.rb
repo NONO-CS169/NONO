@@ -8,7 +8,14 @@ class VenuesController < ApplicationController
     id = params[:id] # retrieve venue ID from URI route
     @venue = Venue.find(id) # look up venue by unique ID
     @reviews = @venue.reviews # venue's reviews
-    @average = @reviews.length == 0 ? -1 : @reviews.average(:stars)
+    @included_audience_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:included_audience_stars)
+    @programming_representation_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:programming_representation_stars)
+    @food_representation_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:food_representation_stars)
+    @personal_comfort_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:personal_comfort_stars)
+    @staff_comfort_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:staff_comfort_stars)
+    @cast_representation_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:cast_representation_stars)
+    @whole_venue_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:whole_venue_stars)
+    @show_overview_stars_average = @reviews.length == 0 ? -1 : @reviews.average(:show_overview_stars)
     # will render app/views/venues/show.<extension> by default
   end
 
