@@ -1,4 +1,4 @@
-# Night On Night Off
+# Night Out Night Off
 
 CS 169 Fall 2019 <br>
 Team 17 Final Project <br>
