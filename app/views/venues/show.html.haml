@@ -41,7 +41,17 @@
 = link_to @venue.link, @venue.link
 
 <br><br>
+%h4 Reviews
+Sort Reviews: 
+= form_tag venue_sort_path, method: :get do
+  = select(:sort, :name, options_for_select(@affinities))
+  = submit_tag 'Sort Reviews', :class => 'submit_button'
+
+<br>
 - @reviews.each do |review|
+  Affinity:
+  = review.affinity
+  <br>
 
   1. Audience Inclusion Rating: 
   = review.included_audience_stars

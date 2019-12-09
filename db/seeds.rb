@@ -35,11 +35,11 @@ xlsx.each(venue_name: "DRAFT VENUE LIST", location:	"Location", name:	"Person wh
                            food_representation_text: "cool", personal_comfort_stars: 3, personal_comfort_text: "cool", staff_comfort_stars: 4,
                            staff_comfort_text: "cool", cast_representation_stars: 3, cast_representation_text: "cool", whole_venue_stars: 4,
                            whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "Child Friendly")
-  Review.create(votes: 20, venue_id: v.id, user_id: @user.id, included_audience_stars: 5, included_audience_text: "cool",
+  Review.create(votes: 10, venue_id: v.id, user_id: @user.id, included_audience_stars: 5, included_audience_text: "cool",
                            programming_representation_stars: 5, programming_representation_text: "cool", food_representation_stars: 3,
                            food_representation_text: "cool", personal_comfort_stars: 3, personal_comfort_text: "cool", staff_comfort_stars: 4,
                            staff_comfort_text: "cool", cast_representation_stars: 3, cast_representation_text: "cool", whole_venue_stars: 4,
-                           whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "Child Friendly")
+                           whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "LGBTQIA")
 end
 
 # venues = [{:venue_name => 'UC Berkeley', :location => 'Berkeley', :description => '#1 Public University in the United States', season: "Season (Y/N/S)"},
