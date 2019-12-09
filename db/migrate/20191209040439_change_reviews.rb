@@ -18,5 +18,6 @@ class ChangeReviews < ActiveRecord::Migration
     add_column :reviews, :whole_venue_text, :text
     add_column :reviews, :show_overview_stars, :integer
     add_column :reviews, :show_overview_text, :text
+    add_column :reviews, :affinity, :string
   end
 end

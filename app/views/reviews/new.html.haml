@@ -6,6 +6,10 @@
     = label :review, :venue_name, 'Venue Name: '
     #{@venue.venue_name}
 
+    <br>
+    = label :review, :stars, 'Affinity'
+    = select :review, :affinity, @affinities
+
     = label :review, :venue_name, '(For star ratings: 1 is worst and 5 is best.)'
     <br><br>
     = label :review, :venue_name, '1. Do you feel that the audience at this venue included other people of your affinity group(s)?'

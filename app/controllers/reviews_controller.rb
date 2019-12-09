@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
     def new
+        @affinities = Affinity.uniq.pluck(:name)
         if current_user
             set_restaurant()
         else

@@ -17,13 +17,29 @@ xlsx = Roo::Spreadsheet.open path
     password_confirmation: 'password',
 )
 
+Affinity.create("name": "Child Friendly")
+Affinity.create("name": "LGBTQIA")
+Affinity.create("name": "Veterans")
+
 xlsx.each(venue_name: "DRAFT VENUE LIST", location:	"Location", name:	"Person who added (name)", county: "County", ptype:	"P Type", jtype:	"J Type", season: "Season (Y/N/S)", link:	"Hyperlink") do |venue|
   # venue = venue.merge({rating: 1 + rand(5)})
   # puts venue
   v = Venue.create(venue)
-  Review.create(stars: 5, text: "Amazing", venue_id: v.id, user_id: @user.id, votes: 20)
-  Review.create(stars: 4, text: "Okay", venue_id: v.id, user_id: @user.id, votes: 10)
-  Review.create(stars: 2, text: "Terrible", venue_id: v.id, user_id: @user.id, votes: 0)
+  Review.create(votes: 20, venue_id: v.id, user_id: @user.id, included_audience_stars: 5, included_audience_text: "cool",
+                           programming_representation_stars: 5, programming_representation_text: "cool", food_representation_stars: 3,
+                           food_representation_text: "cool", personal_comfort_stars: 3, personal_comfort_text: "cool", staff_comfort_stars: 4,
+                           staff_comfort_text: "cool", cast_representation_stars: 3, cast_representation_text: "cool", whole_venue_stars: 4,
+                           whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "Child Friendly")
+  Review.create(votes: 20, venue_id: v.id, user_id: @user.id, included_audience_stars: 5, included_audience_text: "cool",
+                           programming_representation_stars: 5, programming_representation_text: "cool", food_representation_stars: 3,
+                           food_representation_text: "cool", personal_comfort_stars: 3, personal_comfort_text: "cool", staff_comfort_stars: 4,
+                           staff_comfort_text: "cool", cast_representation_stars: 3, cast_representation_text: "cool", whole_venue_stars: 4,
+                           whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "Child Friendly")
+  Review.create(votes: 20, venue_id: v.id, user_id: @user.id, included_audience_stars: 5, included_audience_text: "cool",
+                           programming_representation_stars: 5, programming_representation_text: "cool", food_representation_stars: 3,
+                           food_representation_text: "cool", personal_comfort_stars: 3, personal_comfort_text: "cool", staff_comfort_stars: 4,
+                           staff_comfort_text: "cool", cast_representation_stars: 3, cast_representation_text: "cool", whole_venue_stars: 4,
+                           whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "Child Friendly")
 end
 
 # venues = [{:venue_name => 'UC Berkeley', :location => 'Berkeley', :description => '#1 Public University in the United States', season: "Season (Y/N/S)"},
