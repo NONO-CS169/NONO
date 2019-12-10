@@ -2,7 +2,7 @@
 %html
   %head
     %link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous")
-    %title Night On Night Off
+    %title Night Out Night Off
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -11,7 +11,7 @@
       %div.container{:style => "width: 100%; position: relative; align: center;"}
         %img{:src => "/assets/bay-bridge-night.jpg", :style => "width: 100%; opacity: 85%;"}
         %div{:style => "position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);"}
-          %h1.title{:style => "color: white;"} Night On Night Off
+          %h1.title{:style => "color: white;"} Night Out Night Off
         %div{:style => "position: absolute; top: 16px; right: 30px;"}
           = link_to 'Home', root_path, style: 'color:white;'
           &emsp;
