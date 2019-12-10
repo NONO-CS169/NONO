@@ -3,14 +3,14 @@ class ReviewsController < ApplicationController
     def new
         @affinities = Affinity.uniq.pluck(:name)
         if current_user
-            set_restaurant()
+            set_venue()
         else
             redirect_to new_user_session_path
         end
     end
 
     def create
-        set_restaurant()
+        set_venue()
         @review = current_user.reviews.build(review_params)
         @review.venue = @venue
         @review.votes = 0
@@ -36,12 +36,12 @@ class ReviewsController < ApplicationController
 
     private
 
-    def set_restaurant
+    def set_venue
         @venue = Venue.find(params[:venue_id])
     end
 
     def review_params
-        params.require(:review).permit(:affinity,:included_audience_stars, 
+        params.require(:review).permit(:affinity,:included_audience_stars,
         :included_audience_text,
         :programming_representation_stars,
         :programming_representation_text,

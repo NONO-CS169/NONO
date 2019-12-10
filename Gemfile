@@ -40,7 +40,7 @@ gem "roo", "~> 2.8.0"
 
 # Use will_paginate for table pagination
 gem 'will_paginate', '~> 3.1.1'
-gem 'will_paginate-bootstrap' 
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,6 +57,10 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # For unit and integration testing
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
 end
 
 group :production do
