@@ -1,3 +1,36 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.review-box {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  width: 30%;
+}
+
+.vote {
+  background: white;
+  border: 1px solid #284B63;
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.vote-text {
+  color: #284B63;
+  text-decoration: none;
+}
+
+.vote:hover {
+  background: #284B63;
+  text-decoration: none;
+}
+
+.vote-text {
+  color: white;
+}
