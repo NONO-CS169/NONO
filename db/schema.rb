@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191107181457) do
+ActiveRecord::Schema.define(version: 20191209053245) do
+
+  create_table "affinities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "votes"
+    t.integer  "venue_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "included_audience_stars"
+    t.text     "included_audience_text"
+    t.integer  "programming_representation_stars"
+    t.text     "programming_representation_text"
+    t.integer  "food_representation_stars"
+    t.text     "food_representation_text"
+    t.integer  "personal_comfort_stars"
+    t.text     "personal_comfort_text"
+    t.integer  "staff_comfort_stars"
+    t.text     "staff_comfort_text"
+    t.integer  "cast_representation_stars"
+    t.text     "cast_representation_text"
+    t.integer  "whole_venue_stars"
+    t.text     "whole_venue_text"
+    t.integer  "show_overview_stars"
+    t.text     "show_overview_text"
+    t.string   "affinity"
+  end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+  add_index "reviews", ["venue_id"], name: "index_reviews_on_venue_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -26,9 +60,13 @@ ActiveRecord::Schema.define(version: 20191107181457) do
 
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"
-    t.string   "rating"
-    t.text     "description"
-    t.text     "location"
+    t.string   "link"
+    t.string   "location"
+    t.string   "name"
+    t.string   "county"
+    t.string   "ptype"
+    t.string   "jtype"
+    t.string   "season"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
