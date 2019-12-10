@@ -2,14 +2,14 @@
 
 %h2{:style => "color:#235789;"} #{@venue.venue_name}
 <br>
-%h4 Ratings
+%h4s
 %table{:border => 1}
   %tbody
     %tr
-      %td Audience Inclusion Rating:
-      %td Programming Representation Rating:
-      %td Food Representation Rating:
-      %td Personal Comfort Rating:
+      %td Audience Inclusion:
+      %td Programming Representation:
+      %td Food Representation:
+      %td Personal Comfort:
 
       %tr
         %td= "#{@included_audience_stars_average == -1 ? "Not Rated. Add a Review!" : @included_audience_stars_average.round(2)}/5"
@@ -17,10 +17,10 @@
         %td= "#{@food_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @food_representation_stars_average.round(2)}/5"
         %td= "#{@personal_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @personal_comfort_stars_average.round(2)}/5"
 
-      %td Staff Rating:
-      %td Cast Representation Rating:
-      %td Whole Venue Rating:
-      %td Show Overview Rating:
+      %td Staff:
+      %td Cast Representation:
+      %td Whole Venue:
+      %td Show Overview:
       %tr
         %td= "#{@staff_comfort_stars_average == -1 ? "Not Rated. Add a Review!" : @staff_comfort_stars_average.round(2)}/5"
         %td= "#{@cast_representation_stars_average == -1 ? "Not Rated. Add a Review!" : @cast_representation_stars_average.round(2)}/5"
@@ -44,13 +44,9 @@
 
 = link_to @venue.link, @venue.link
 
-%br
-%br
-%h4 Reviews
+<br>
+<br>
 
-= link_to 'Write a Review!', new_venue_review_path(venue_id: @venue)
-<br>
-<br>
 - if @venue.ptype.present? || @venue.jtype.present?
   This event has been categorized under
   - if @venue.ptype.present?
@@ -61,82 +57,70 @@
 %br
 %br
 
-<br><br>
-%h2{:style => "color:#235789;"} Reviews
-Sort Reviews: 
+%h4 Reviews
 = form_tag venue_sort_path, method: :get do
   = select(:sort, :name, options_for_select(@affinities))
+  &emsp;
   = submit_tag 'Sort Reviews', :class => 'submit_button'
 
-<br>
+%br
 - @reviews.each do |review|
+  %div{:class => "review-box"}
+    Audience Inclusion:
+    - (1..review.included_audience_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.included_audience_text}"<br>
 
-  1. Audience Inclusion Rating: 
-  = review.included_audience_stars
-  Star
-  <br>
-  Review: "#{review.included_audience_text}"
-  <br>
+    Programming Representation:
+    - (1..review.programming_representation_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.programming_representation_text}"<br>
 
-  2. Programming Representation Rating: 
-  = review.programming_representation_stars
-  Star
-  <br>
-  Review: "#{review.programming_representation_text}"
-  <br>
+    Food Representation:
+    - (1..review.food_representation_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.food_representation_text}"<br>
 
-  3. Food Representation Rating: 
-  = review.food_representation_stars
-  Star
-  <br>
-  Review: "#{review.food_representation_text}"
-  <br>
+    Personal Comfort:
+    - (1..review.personal_comfort_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.personal_comfort_text}"<br>
 
-  4. Personal Comfort Rating: 
-  = review.personal_comfort_stars
-  Star
-  <br>
-  Review: "#{review.personal_comfort_text}"
-  <br>
+    Staff:
+    - (1..review.staff_comfort_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.staff_comfort_text}"<br>
 
-  5. Staff Rating: 
-  = review.staff_comfort_stars
-  Star
-  <br>
-  Review: "#{review.staff_comfort_text}"
-  <br>
+    Cast Representation:
+    - (1..review.cast_representation_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.cast_representation_text}"<br>
 
-  6. Cast Representation Rating: 
-  = review.cast_representation_stars
-  Star
-  <br>
-  Review: "#{review.cast_representation_text}"
-  <br>
-  
-  7. Whole Venue Rating: 
-  = review.whole_venue_stars
-  Star
-  <br>
-  Review: "#{review.whole_venue_text}"
-  <br>
+    Whole Venue:
+    - (1..review.whole_venue_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.whole_venue_text}"<br>
 
-  8. Show Overview Rating: 
-  = review.show_overview_stars
-  Star
-  <br>
-  Review: "#{review.show_overview_text}"
-  <br>
+    Show Overview:
+    - (1..review.show_overview_stars).each do |i|
+      ⭑
+    <br>&emsp;| Comments: "#{review.show_overview_text}"<br>
 
-  by: #{review.user.email}
-  <br>
-  Number of Votes: #{review.votes}
-  = link_to "Upvote", review_upvote_path(@venue.id, review.id), :method => :post
-  = link_to "Downvote", review_downvote_path(@venue.id, review.id), :method => :post
-  <br><br>
-<hr>
+    <br>Written by #{review.user.email}<br>
+    #{review.votes} Points
+    <br>
+    %div{:class => "vote"}
+      = link_to "Helpful", review_upvote_path(@venue.id, review.id), :method => :post, :class => 'vote-text'
+    %div{:class => "vote"}
+      = link_to "Downvote", review_downvote_path(@venue.id, review.id), :method => :post, :class => 'vote-text'
+%br
+%br
+= link_to 'Write Review', new_venue_review_path(venue_id: @venue), :class => 'new_review'
+%hr
 
 = link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'
-<br>
+%br
 = link_to 'Edit Event', edit_venue_path(@venue), :class => 'link_button'
-<br>
+%br
 = link_to 'Back Home', venues_path, :class => 'link_button'
+%br
