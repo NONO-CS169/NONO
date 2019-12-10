@@ -44,13 +44,9 @@
 
 = link_to @venue.link, @venue.link
 
-%br
-%br
-%h4 Reviews
+<br>
+<br>
 
-= link_to 'Write a Review!', new_venue_review_path(venue_id: @venue)
-<br>
-<br>
 - if @venue.ptype.present? || @venue.jtype.present?
   This event has been categorized under
   - if @venue.ptype.present?
@@ -61,13 +57,13 @@
 %br
 %br
 
-<br><br>
-%h2{:style => "color:#235789;"} Reviews
+%h4 Reviews
 = form_tag venue_sort_path, method: :get do
   = select(:sort, :name, options_for_select(@affinities))
+  &emsp;
   = submit_tag 'Sort Reviews', :class => 'submit_button'
 
-<br>
+%br
 - @reviews.each do |review|
   %div{:class => "review-box"}
     Audience Inclusion:
@@ -117,10 +113,14 @@
       = link_to "Helpful", review_upvote_path(@venue.id, review.id), :method => :post, :class => 'vote-text'
     %div{:class => "vote"}
       = link_to "Downvote", review_downvote_path(@venue.id, review.id), :method => :post, :class => 'vote-text'
-<hr>
+%br
+%br
+= link_to 'Write Review', new_venue_review_path(venue_id: @venue), :class => 'new_review'
+%hr
 
 = link_to 'Delete Event', venue_path(@venue), :method => :delete, :confirm => 'Are you sure?', :class => 'link_button'
-<br>
+%br
 = link_to 'Edit Event', edit_venue_path(@venue), :class => 'link_button'
-<br>
+%br
 = link_to 'Back Home', venues_path, :class => 'link_button'
+%br
