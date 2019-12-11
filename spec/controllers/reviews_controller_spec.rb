@@ -5,16 +5,23 @@ describe ReviewsController do
     it "should increase the total number of reviews by 1" do
       # Create Venue to create review for.
       # Should be calling: POST, /venues(.:format), venues#create
-      post :create, venue: {
+      original_controller = @controller
+      @controller = VenuesController.new
+      v = post :create, venue: {
         :venue_name => 'Wheeler Hall',
         :location => 'Berkeley',
         season: "Season (Y/N/S)"
       }
-
+      @controller = original_controller
       # Create Review
       # POST /venues/:venue_id/reviews(.:format), reviews#create
       expect { post :create,
-        venue_id: 1
+        venue_id: 1,
+        review_params: {votes: 20, venue_id: 1, user_id: 1, included_audience_stars: 5, included_audience_text: "cool",
+          programming_representation_stars: 5, programming_representation_text: "cool", food_representation_stars: 3,
+          food_representation_text: "cool", personal_comfort_stars: 3, personal_comfort_text: "cool", staff_comfort_stars: 4,
+          staff_comfort_text: "cool", cast_representation_stars: 3, cast_representation_text: "cool", whole_venue_stars: 4,
+          whole_venue_text: "cool", show_overview_stars: 3, show_overview_text: "cool", affinity: "Child Friendly"}
       }.to change(Review, :count).by(1)
     end
   end
