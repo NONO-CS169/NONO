@@ -1,4 +1,4 @@
-# Night On Night Off
+# Night Out Night Off
 
 CS 169 Fall 2019 <br>
 Team 17 Final Project <br>
@@ -23,6 +23,9 @@ The server should be spun up accordingly and the website will be available at `h
 
 To instantiate the mock database, run the command `rake db:reset db:migrate`. This will populate the database with events from the `db/seeds.rb` file.
 
+## Tests
+Cucumber and Rspec have been enabled, and there are some starter tests to cover the basic controller files within the `/spec` and `/features` directories. To run the Rspec unit tests, run `bundle exec rake`. To run the Cucumber behavior tests, run `cucumber`. Last but not least, the `simplecov` gem is also included. To view the test coverage, after running either the Rspec or Cucumber tests, open `/coverage/index.html`.
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -33,7 +36,6 @@ Pivotal Tracker [link](https://www.pivotaltracker.com/n/projects/2406210)
 Code Climate [link](https://codeclimate.com/github/NONO-CS169/NONO)
 
 ## Authors
-
 Rohith Krishna, Wilson Wang, Christine Lee, Aismit Das, John Yang, Grant Shimada, Pooja Nagpal
 
 ## License
