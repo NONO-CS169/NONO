@@ -6,6 +6,7 @@
 %table{:border => 1}
   %tbody
     %tr
+      %td Affinity Group: 
       %td Audience Inclusion:
       %td Programming Representation:
       %td Food Representation:
@@ -66,6 +67,9 @@
 %br
 - @reviews.each do |review|
   %div{:class => "review-box"}
+
+    <b>User Affinity: #{review.affinity}<br></b>
+
     Audience Inclusion:
     - (1..review.included_audience_stars).each do |i|
       ⭑
