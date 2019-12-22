@@ -10,11 +10,19 @@ require 'roo'
 path = Rails.root.join('db', 'test.xlsx').to_s
 xlsx = Roo::Spreadsheet.open path
 
+@user = User.find_or_initialize_by(email: 'admin@gmail.com')
+@user.update_attributes(
+    email: 'admin@gmail.com',
+    password: 'password',
+    password_confirmation: 'password',
+    admin: true,
+)
 @user = User.find_or_initialize_by(email: 'user1@gmail.com')
 @user.update_attributes(
     email: 'user1@gmail.com',
     password: 'password',
     password_confirmation: 'password',
+    admin: false,
 )
 
 Affinity.create("name": "Child Friendly")
