@@ -2,13 +2,6 @@
 %div.container
   %h3{:style => "color:#235789;"} Venues
 
-  = form_tag venues_path, :method => :get, id: 'ratings_form' do
-    Include:
-    - @all_ratings.each do |rating|
-      = rating
-      = check_box_tag "ratings[#{rating}]", 1 , (@ratings.include? rating), id: "ratings_#{rating}"
-    = submit_tag 'Refresh', :class => 'btn btn-primary', id: 'ratings_submit'
-
   %table#venues.table.table-striped.col-md-12
     %thead
       %tr
