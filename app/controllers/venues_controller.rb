@@ -33,8 +33,8 @@ class VenuesController < ApplicationController
         if sort_by
           @venues = Venue.order(sort_by)
           @table_header = 'hilite' if sort_by == 'venue_name'
-          @table_header = 'hilite' if sort_by == 'location'
-          @table_header = 'hilite' if sort_by == 'county'
+          # @table_header = 'hilite' if sort_by == 'location'
+          # @table_header = 'hilite' if sort_by == 'county'
         end
 
         if params.keys.include? "ratings"

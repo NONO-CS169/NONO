@@ -14,8 +14,8 @@
       %tr
         %th{class: @table_header}= link_to "Venue Name", venues_path(:sort => "venue_name"), :id => "venue_name_header"
         -# %th Rating
-        %th{class: @location_header} = link_to "Location", venues_path(:sort => "location"), :id => "location_header"
-        %th {class: @county_header} = link_to "County", venues_path(:sort => "county"), :id => "county_header"
+        %th{class: @location_header}= link_to "Location", venues_path(:sort => "location"), :id => "location_header"
+        %th{class: @county_header}= link_to "County", venues_path(:sort => "county"), :id => "county_header"
         %th More Info
     %tbody
       - @venues.each do |venue|
