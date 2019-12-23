@@ -52,9 +52,9 @@
 - if @venue.ptype.present? || @venue.jtype.present?
   This event has been categorized under:
   - if @venue.jtype.present?
-    #{@venue.jtype}
+    #{@venue.jtype.downcase.strip}
   - if @venue.ptype.present? and !@venue.jtype.present?
-    #{@venue.ptype}
+    #{@venue.ptype.downcase.strip}
   - if @venue.ptype == nil and @venue.jtype == nil
     No categories associated with this venue.
 
