@@ -4,4 +4,7 @@ class Venue < ActiveRecord::Base
     # def self.all_ratings
     #     return pluck(:rating).uniq
     # end
+    def name
+        venue_name
+    end
 end
