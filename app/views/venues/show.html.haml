@@ -50,11 +50,13 @@
 
 %h4 Categories
 - if @venue.ptype.present? || @venue.jtype.present?
-  This event has been categorized under
-  - if @venue.ptype.present?
-    #{@venue.ptype}
+  This event has been categorized under:
   - if @venue.jtype.present?
-    , #{@venue.jtype}
+    #{@venue.jtype}
+  - if @venue.ptype.present? and !@venue.jtype.present?
+    #{@venue.ptype}
+  - if @venue.ptype == nil and @venue.jtype == nil
+    No categories associated with this venue.
 
 %br
 %br
