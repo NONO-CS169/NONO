@@ -24,6 +24,7 @@ module Venues
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths << Rails.root.join('lib')
     config.web_console.development_only = false
+    config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
     # config.expect_with(:rspec) { |c| c.syntax = :should }
   end
 end
